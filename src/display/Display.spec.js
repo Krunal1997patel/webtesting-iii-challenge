@@ -32,3 +32,14 @@ test('if Open is false', () => {
     const { queryByText } = render(<Display closed={true} />);
     expect(queryByText(/Open/i)).toBeFalsy();
 });
+
+
+test('If it is Unlocked and Open, the color should be greed-lit', () => {
+    const { getByText} = render(<Display locked={false} />);
+    expect(getByText(/Unlocked/i).classList.contains("green-led")).toBe(true);
+})
+
+test('If it is Locked and Closeed, the color should be red-lit', ()=> {
+    const { getByText } = render(<Display locked={true} />);
+    expect(getByText(/Locked/i).classList.contains("red-led")).toBe(true);
+})
